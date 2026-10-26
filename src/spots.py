@@ -1,7 +1,8 @@
 import json
+from config import JSON_PATH
 
 def load_spots():
-    with open("data/surf_spots.json") as f:
+    with open(JSON_PATH) as f:
         spots = json.load(f)
 
     return spots
