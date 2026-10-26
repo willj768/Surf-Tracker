@@ -1,4 +1,5 @@
-from config import LOW_PERIOD_BOUNDARY, HIGH_PERIOD_BOUNDARY, LOW_HEIGHT_BOUNDARY, IDEAL_HEIGHT, HIGH_HEIGHT_BOUNDARY, LOW_SWELL_DIRECTION_BOUNDARY, HIGH_SWELL_DIRECTION_BOUNDARY, HEIGHT_WEIGHT, PERIOD_WEIGHT, SWELL_DIRECTION_WEIGHT, WIND_WEIGHT, MIN_SUB_SCORE, MIN_INFLUENCE_SPEED, MAX_INFLUENCE_SPEED, MIN_GALE_SPEED, MAX_GALE_SPEED
+from config import LOW_PERIOD_BOUNDARY, HIGH_PERIOD_BOUNDARY, LOW_HEIGHT_BOUNDARY, IDEAL_HEIGHT, HIGH_HEIGHT_BOUNDARY, LOW_SWELL_DIRECTION_BOUNDARY, HIGH_SWELL_DIRECTION_BOUNDARY, HEIGHT_WEIGHT, PERIOD_WEIGHT, SWELL_DIRECTION_WEIGHT, WIND_WEIGHT, MIN_SUB_SCORE
+import math
 
 def ramp(x, low, high):
     if x <= low:
@@ -28,16 +29,25 @@ def swell_direction_score(beach_angle, swell_angle):
 
     return 1 - ramp(diff, LOW_SWELL_DIRECTION_BOUNDARY, HIGH_SWELL_DIRECTION_BOUNDARY)
 
-def wind_score(beach_angle, wind_angle, wind_speed):
+def wind_direction_score(beach_angle, wind_angle):
     diff = angle_diff(beach_angle, wind_angle)
-    direction_score = diff / 180
 
-    influence = ramp(wind_speed, MIN_INFLUENCE_SPEED, MAX_INFLUENCE_SPEED)
-    gale_factor = 1 - ramp(wind_speed, MIN_GALE_SPEED, MAX_GALE_SPEED)
-    blend = (1 - influence) * 1 + influence * direction_score
-    final_score = blend * gale_factor
+    return (1 - math.cos(math.radians(diff))) / 2
 
-    return final_score
+def wind_speed_score(wind_speed):
+    return 1 - ramp(wind_speed, 8, 55)
+
+def wind_score(beach_angle, wind_angle, wind_speed):
+    direction = wind_direction_score(beach_angle, wind_angle)
+    speed = wind_speed_score(wind_speed)
+
+    influence = ramp(wind_speed, 5, 20)
+
+    direction_factor = (
+        (1 - influence) + influence * direction
+    )
+
+    return direction_factor * speed
 
 def surf_score(swell_height, swell_period, swell_angle, wind_speed, wind_angle, beach_angle):
     period = period_score(swell_period)
@@ -56,8 +66,6 @@ def surf_score(swell_height, swell_period, swell_angle, wind_speed, wind_angle, 
 
     return overall_score
 
-if __name__ == "__main__":
-    print(surf_score(0.8, 9.0, 264, 37.8, 218, 270))
 
 
 
