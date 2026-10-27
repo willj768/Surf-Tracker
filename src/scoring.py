@@ -1,4 +1,5 @@
 from config import LOW_PERIOD_BOUNDARY, HIGH_PERIOD_BOUNDARY, LOW_HEIGHT_BOUNDARY, IDEAL_HEIGHT, HIGH_HEIGHT_BOUNDARY, LOW_SWELL_DIRECTION_BOUNDARY, HIGH_SWELL_DIRECTION_BOUNDARY, HEIGHT_WEIGHT, PERIOD_WEIGHT, SWELL_DIRECTION_WEIGHT, WIND_WEIGHT, MIN_SUB_SCORE
+from db_handler import get_reading
 import math
 
 def ramp(x, low, high):
@@ -66,7 +67,35 @@ def surf_score(swell_height, swell_period, swell_angle, wind_speed, wind_angle, 
 
     return overall_score
 
+def score_reading(spot_name, forecast_time):
+    row = get_reading(spot_name, forecast_time)
 
+    if row is None:
+        print("No forecast found for that spot and time.")
+        return None
+
+    values = [
+        row["swell_height"],
+        row["swell_period"],
+        row["swell_direction"],
+        row["wind_speed"],
+        row["wind_direction"],
+    ]
+
+    if any(value is None for value in values):
+        print("Cannot calculate score: missing forecast data.")
+        return None
+
+    score = surf_score(
+        row["swell_height"],
+        row["swell_period"],
+        row["swell_direction"],
+        row["wind_speed"],
+        row["wind_direction"],
+        row["facing"],
+    )
+
+    return score
 
 
 

@@ -1,13 +1,20 @@
+from pathlib import Path
+
 MARINE_URL = "https://marine-api.open-meteo.com/v1/marine"
 WIND_URL = "https://api.open-meteo.com/v1/forecast"
 
-JSON_PATH = "data/surf_spots.json"
-DB_PATH = "data.surf.db"
+BASE_DIR = Path(__file__).resolve().parent.parent
+DATA_DIR = BASE_DIR / "data"
+JSON_PATH = DATA_DIR / "surf_spots.json"
+DB_PATH = DATA_DIR / "surf.db"
+
+DEBUG_SPOTS = ("Croyde", "Saunton", "Sennen", "Fistral", "Praa Sands")
 
 LOW_PERIOD_BOUNDARY = 6
 HIGH_PERIOD_BOUNDARY = 12
 
 LOW_HEIGHT_BOUNDARY = 0.3
+
 IDEAL_HEIGHT = 1.25
 HIGH_HEIGHT_BOUNDARY = 2.5
 
