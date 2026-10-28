@@ -27,7 +27,7 @@ def init_db():
         );
 
         CREATE TABLE IF NOT EXISTS readings (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            id INTEGER PRIMARY KEY,
             spot_id INTEGER NOT NULL REFERENCES spots(id),
             time TEXT NOT NULL,
             fetched_at TEXT NOT NULL,
@@ -129,27 +129,36 @@ def clear_readings(cursor):
         WHERE datetime(time) < datetime('now', 'localtime')
     """)
 
-def get_reading(spot_name, forecast_time):
+def get_readings(query):
 
     conn = get_connection()
+
     try:
-        row = conn.execute("""
+        rows = conn.execute("""
             SELECT
+                s.name,
+                r.time,
                 r.swell_height,
                 r.swell_period,
                 r.swell_direction,
                 r.wind_speed,
                 r.wind_direction,
-                s.facing,
-                s.name
+                r.score
             FROM readings r
             JOIN spots s ON s.id = r.spot_id
-            WHERE s.name = ? AND r.time = ?
-            ORDER BY r.fetched_at DESC
-            LIMIT 1
-        """, (spot_name, forecast_time)).fetchone()
+            WHERE s.name LIKE ?
+            ORDER BY s.name, r.time
+        """, (f"%{query}%",)).fetchall()
 
     finally:
         conn.close()
 
-    return row
+    results = {}
+    for row in rows:
+        reading = dict(row)
+        name = reading.pop("name")
+        results.setdefault(name, []).append(reading)
+
+    return results
+
+

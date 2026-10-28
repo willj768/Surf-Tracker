@@ -15,7 +15,7 @@
   {"name": "Gwithian",     "coast": "west cornwall",  "lat": 50.2500, "lon": -5.3900, "facing": 304},
   {"name": "Porthmeor",    "coast": "west cornwall",  "lat": 50.2220, "lon": -5.4830, "facing": 338},
   {"name": "Sennen",       "coast": "west cornwall",  "lat": 50.0817, "lon": -5.6939, "facing": 294},
-  {"name": "Porthleven",   "coast": "south cornwall", "lat": 50.0720, "lon": -5.3250, "facing": 228},
+  {"name": "Porthleven",   "coast": "south cornwall", "lat": 50.0821, "lon": -5.3227, "facing": 228},
   {"name": "Praa Sands",   "coast": "south cornwall", "lat": 50.1018, "lon": -5.3882, "facing": 209},
   {"name": "Bantham",      "coast": "south devon",    "lat": 50.2650, "lon": -3.8950, "facing": 219}
 ]

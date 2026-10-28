@@ -4,6 +4,7 @@ from api import get_forecast
 from scoring import surf_score
 from config import MODE
 from db_handler import save_readings, init_db, upsert_spots, get_spot_ids
+from charts import score_bar_chart
 
 def main():
     init_db()
@@ -42,6 +43,8 @@ def main():
             continue
 
         save_readings(spot_ids[spot["name"]], surf_data, MODE)
+
+    score_bar_chart("Porthleven")
 
 if __name__ == "__main__":
     main()
