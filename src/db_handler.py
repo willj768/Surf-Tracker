@@ -37,6 +37,7 @@ def init_db():
             swell_direction REAL,
             wind_speed REAL,      -- km/h
             wind_direction REAL,
+            score INTEGER,
             UNIQUE (spot_id, time, fetched_at)
         );
     """)
@@ -48,7 +49,7 @@ def save_readings(spot_id, surf_data, mode):
     conn = get_connection()
     cursor = conn.cursor()
 
-    fetched_at = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    fetched_at = datetime.now().isoformat(timespec="minutes")
 
     try:
 
@@ -62,9 +63,9 @@ def save_readings(spot_id, surf_data, mode):
                 INSERT OR IGNORE INTO readings (
                     spot_id, time, fetched_at, mode,
                     swell_height, swell_period, swell_direction,
-                    wind_speed, wind_direction
+                    wind_speed, wind_direction, score
                 )
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             """, (
                 spot_id,
                 reading["time"],
@@ -75,6 +76,7 @@ def save_readings(spot_id, surf_data, mode):
                 reading["swell_wave_direction"],
                 reading["wind_speed_10m"],
                 reading["wind_direction_10m"],
+                reading["score"]
             ))
 
         clear_readings(cursor)

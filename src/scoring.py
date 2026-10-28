@@ -66,36 +66,3 @@ def surf_score(swell_height, swell_period, swell_angle, wind_speed, wind_angle, 
     overall_score = round(overall_value * 100)
 
     return overall_score
-
-def score_reading(spot_name, forecast_time):
-    row = get_reading(spot_name, forecast_time)
-
-    if row is None:
-        print("No forecast found for that spot and time.")
-        return None
-
-    values = [
-        row["swell_height"],
-        row["swell_period"],
-        row["swell_direction"],
-        row["wind_speed"],
-        row["wind_direction"],
-    ]
-
-    if any(value is None for value in values):
-        print("Cannot calculate score: missing forecast data.")
-        return None
-
-    score = surf_score(
-        row["swell_height"],
-        row["swell_period"],
-        row["swell_direction"],
-        row["wind_speed"],
-        row["wind_direction"],
-        row["facing"],
-    )
-
-    return score
-
-
-
