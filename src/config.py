@@ -7,6 +7,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 DATA_DIR = BASE_DIR / "data"
 JSON_PATH = DATA_DIR / "surf_spots.json"
 DB_PATH = DATA_DIR / "surf.db"
+STATIC_DIR = BASE_DIR / "static"
+HTML_PATH = STATIC_DIR / "index.html"
 
 DEBUG_SPOTS = ("Croyde", "Saunton", "Sennen", "Fistral", "Praa Sands")
 

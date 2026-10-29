@@ -1,10 +1,52 @@
 import requests
+import json
 from spots import load_spots
 from api import get_forecast
 from scoring import surf_score
-from config import MODE
-from db_handler import save_readings, init_db, upsert_spots, get_spot_ids
+from config import MODE, JSON_PATH, HTML_PATH, STATIC_DIR
+from db_handler import save_readings, init_db, upsert_spots, get_spot_ids, get_readings
 from charts import score_bar_chart
+from fastapi import FastAPI, HTTPException, Response
+from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
+
+app = FastAPI()
+
+app.mount("/static", StaticFiles(directory=STATIC_DIR), name="static")
+
+with open(JSON_PATH) as f:
+    spots = json.load(f)
+    names = [spot["name"] for spot in spots]
+
+@app.get("/")
+def home():
+    return FileResponse(HTML_PATH)
+
+@app.get("/search")
+def search(q: str):
+
+    if not q.strip():
+        return []
+
+    q = q.lower()
+
+    filtered_list = [name for name in names if q in name.lower()]
+
+    return filtered_list[:8]
+
+@app.get("/readings/{spot_name}")
+def readings(spot_name: str):
+    results = get_readings(spot_name)
+    return results
+
+@app.get("/chart/{spot_name}")
+def chart(spot_name: str):
+    try:
+        buf = score_bar_chart(spot_name)
+    except ValueError:
+        raise HTTPException(status_code=404, detail="No readings for this spot")
+    return Response(content=buf.getvalue(), media_type="image/png")
+
 
 def main():
     init_db()
