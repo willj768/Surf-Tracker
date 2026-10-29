@@ -47,6 +47,16 @@ def chart(spot_name: str):
         raise HTTPException(status_code=404, detail="No readings for this spot")
     return Response(content=buf.getvalue(), media_type="image/png")
 
+@app.get("/spot/{spot_name}")
+def spot_info(spot_name: str):
+    for spot in spots:
+        if spot["name"].lower() == spot_name.lower():
+            return spot
+    raise HTTPException(status_code=404, detail="Spot not found")
+
+
+
+
 
 def main():
     init_db()
