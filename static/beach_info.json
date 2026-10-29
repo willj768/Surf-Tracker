@@ -1,0 +1,95 @@
+{
+  "saunton": {
+    "description": "",
+    "photoCredit": {
+      "text": "Surfers at Saunton Sands",
+      "url": "https://commons.wikimedia.org/wiki/File:Surfers_at_Saunton_Sands_-_geograph.org.uk_-_2337863.jpg",
+      "photographer": "Tom Jolliffe",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/",
+      "modification": "Cropped from original"
+    }
+  },
+  "croyde": {
+    "description": ""
+  },
+  "woolacombe": {
+    "description": "",
+    "photoCredit": {
+      "text": "Lone Surfer at Woolacombe Beach",
+      "url": "https://commons.wikimedia.org/wiki/File:Lone_Surfer_at_Woolacombe_Beach_-_geograph.org.uk_-_2860752.jpg",
+      "photographer": "Tom Jolliffe",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/",
+      "modification": "Cropped from original"
+    }
+  },
+  "putsborough": {
+    "description": "",
+    "photoCredit": {
+      "text": "North Devon : Surfing at Putsborough",
+      "url": "https://commons.wikimedia.org/wiki/File:North_Devon_,_Surfing_at_Putsborough_-_geograph.org.uk_-_4581807.jpg",
+      "photographer": "Lewis Clarke",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/",
+      "modification": "Cropped from original"
+    }
+  },
+  "westward ho!": {
+    "description": "",
+    "photoCredit": {
+      "text": "Westward Ho! beach and surfers",
+      "url": "https://commons.wikimedia.org/wiki/File:Westward_Ho!_beach_and_surfers,_North_Devon.jpg",
+      "photographer": "Rosser1954",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "modification": "Cropped from original"
+    }
+  },
+  "porthtowan": {
+    "description": "",
+    "photoCredit": {
+      "text": "Catching a wave - Porthtowan",
+      "url": "https://commons.wikimedia.org/wiki/File:Catching_a_wave_-_Porthtowan_-_geograph.org.uk_-_5132511.jpg",
+      "photographer": "Chris Allen",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/",
+      "modification": "Cropped from original"
+    }
+  },
+  "gwithian": {
+    "description": "",
+    "photoCredit": {
+      "text": "Surfing: about to fall off at Gwithian",
+      "url": "https://commons.wikimedia.org/wiki/File:Surfing,_about_to_fall_off_at_Gwithian_-_geograph.org.uk_-_1545356.jpg",
+      "photographer": "Andy F",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/",
+      "modification": "Cropped from original"
+    }
+  },
+  "sennen": {
+    "description": "",
+    "photoCredit": {
+      "text": "About to take the",
+      "url": "https://commons.wikimedia.org/wiki/File:About_to_take_the_plunge_-_geograph.org.uk_-_2228791.jpg",
+      "photographer": "Rod Allday",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/",
+      "modification": "Cropped from original"
+    }
+  },
+  "praa sands": {
+    "description": "",
+    "photoCredit": {
+      "text": "Praa Sands - surf's up",
+      "url": "https://commons.wikimedia.org/wiki/File:Praa_Sands_-_surf%27s_up_-_geograph.org.uk_-_5424623.jpg",
+      "photographer": "Chris Allen",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/",
+      "modification": "Cropped from original"
+    }
+  }
+
+
+}

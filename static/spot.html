@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Surf Tracker - Spot</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body class="has-bg">
+  
+  <main class="spot-page">
+
+    <section class="spot-hero">
+      <a class="back" href="/">← Back to search</a>
+      <h1 id="spot-name">Loading...</h1>
+      <p id="spot-meta"></p>
+
+      <p id="photo-credit" class="photo-credit" hidden>
+        Photo: <a id="credit-link" href="#" target="_blank" rel="noopener">
+          Saunton Sands
+        </a>
+        by Tom Jolliffe, licensed under
+        <a href="https://creativecommons.org/licenses/by-sa/2.0/"
+          target="_blank" rel="noopener">
+          CC BY-SA 2.0
+        </a>.
+      </p>
+    </section>
+
+    <div class="spot-content">
+
+      <section class="card">
+        <h2>About this beach</h2>
+        <p id="spot-description"></p>
+      </section>
+
+      <div class="grid">
+        <section class="card">
+          <h2>Surf score</h2>
+          <div id="results"></div>
+        </section>
+
+        <section class="card">
+          <h2>Location</h2>
+          <div id="map"></div>
+        </section>
+      </div>
+
+    </div>
+  </main>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
+  <script src="/static/spot.js"></script>
+</body>
+</html>
