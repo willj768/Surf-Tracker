@@ -96,8 +96,6 @@ def main():
 
         save_readings(spot_ids[spot["name"]], surf_data, MODE)
 
-    score_bar_chart("Porthleven")
-
 if __name__ == "__main__":
     main()
 
